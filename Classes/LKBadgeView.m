@@ -116,16 +116,24 @@
 
 - (void)_adjustBadgeFrameWith
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CGSize suffixSize = [LK_BADGE_VIEW_TRUNCATED_SUFFIX sizeWithFont:self.font];
-
+#pragma clang diagnostic pop
     CGFloat paddinWidth = LK_BADGE_VIEW_HORIZONTAL_PADDING*2;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CGSize size = [self.displayinText sizeWithFont:self.font];
+#pragma clang diagnostic pop
     badgeFrame_.size.width = size.width + paddinWidth;
     
     if (badgeFrame_.size.width > self.bounds.size.width) {
 
         while (1) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             size = [self.displayinText sizeWithFont:self.font];
+#pragma clang diagnostic pop
             badgeFrame_.size.width = size.width + paddinWidth;
             if (badgeFrame_.size.width+suffixSize.width > self.bounds.size.width) {
                 if ([self.displayinText length] > 1) {
