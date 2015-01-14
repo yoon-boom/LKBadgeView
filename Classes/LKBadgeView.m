@@ -268,17 +268,26 @@
     // draw text
     if (self.text != nil || [self.text length] > 0) {
         [self.textColor setFill];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         CGSize size = [self.displayinText sizeWithFont:self.font];
+#pragma clang diagnostic pop
         CGPoint p = CGPointMake(bp.x + (badgeFrame_.size.width - size.width)/2.0 + textOffset_.width,
                                 bp.y + (badgeFrame_.size.height - size.height)/2.0 + textOffset_.height);
 
         if (self.shadowOfText) {
             CGContextSaveGState(context);
             CGContextSetShadowWithColor(context, self.shadowOffset, self.shadowBlur, self.shadowColor.CGColor);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [self.displayinText drawAtPoint:p withFont:self.font];
+#pragma clang diagnostic pop
             CGContextRestoreGState(context);            
         } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [self.displayinText drawAtPoint:p withFont:self.font];
+#pragma clang diagnostic pop
         }
     }
     
